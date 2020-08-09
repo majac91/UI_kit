@@ -1,0 +1,282 @@
+//Basic styles 
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+//Variables
+
+$dark-blue: #283C52;
+$green: #219A9C;
+$light-gray: #E9EAF1;
+
+
+body {
+    font-family: 'Raleway', sans-serif; //300, 400, 500
+    font-size: 10px;
+    color: $dark-blue;
+    overflow-x: hidden;
+}
+
+a {
+    text-decoration: none;
+    color: $dark-blue;
+    &:hover {
+        color: $green;
+    }
+}
+
+li {
+    list-style: none;
+}
+
+.container {
+    width: 90%;
+    margin: auto;
+}
+
+.d-flex {
+    display: flex;
+}
+
+//N A V B A R 
+
+nav {
+    .d-flex {
+        height: 6rem;
+        justify-content: space-between;
+        align-items: center;        
+        .nav-logo {
+            font-size: 2rem;
+            font-weight: 500;
+            position: relative;
+            span {
+                display: inline-block;
+                transform: scale(.6);
+                position: absolute;
+                left: 94px;
+                top: -5px;
+            }
+        }
+        .nav-links {
+            li {
+                margin-left: 2.5rem;
+                font-size: 1.1rem;
+            }
+        }
+    }
+    .menu-toggler {
+        display: none;
+        .menu-icon {
+            display: none;
+        }
+    }
+}
+
+//H E R O 
+
+    .hero {
+        height: 80vh;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: 1;
+        grid-template-areas:
+        'text img';
+
+        .text {
+            grid-area: 'text';
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            padding-top: 4rem;
+            .caption {
+                font-size: 3rem;
+                font-weight: 300;
+                padding-bottom: 3rem;
+            }
+            p {
+                font-size: 1.3rem;
+                padding-bottom: 5rem;
+            }
+            button {
+                background-color: $green;
+                color: white;
+                font-size: .9rem;
+                display: inline-block;
+                width: 10rem;
+                padding: 15px 20px;
+                border: none;
+                &:hover {
+                    background-color: lighten($color: $green, $amount: 5);
+                }
+            }
+        }
+        .img {
+            margin-top: 2rem;
+            grid-area: 'img';
+            background: url(../img/hero.png);
+            background-size: cover;
+            background-position: center;
+            height: 100%;
+            width: 100%;
+        }
+    }
+
+
+
+@media screen and (max-width: 790px) {
+
+ //Navbar
+
+    nav {
+        position: relative;
+        left: 0;
+        top: 0;
+        z-index: 1;
+
+        .nav-links {
+            width: 100%;
+            height: 100vh;
+            background-color:$light-gray;
+            position: absolute;
+            left: 0%;
+            top: 0;
+            transform: translateX(-100%);
+            transition: transform .5s ease-in;
+            z-index: 250;
+
+            .d-flex {
+                flex-direction: column;
+                justify-content: space-evenly;
+                height: 100vh;
+                & > li {
+                    margin-left: 0;
+                    a {
+                        color: $dark-blue;
+                        font-size: 1.3rem;
+                    }
+                }
+            }
+        }
+
+        .menu-toggler {
+            position: relative;
+            display: block;
+            cursor: pointer;
+            height: 2rem;
+            width: 2rem;   
+            z-index: 300;
+
+            .menu-icon {
+                display: block;
+                height: 2px;
+                width: 2rem;
+                background-color: $dark-blue;
+                position: relative;
+                top: 10px;
+                z-index: 350;
+                border-radius: 5px;
+                cursor: pointer;
+                transition: background-color .4s ease-out;
+
+
+
+                &::before  {
+                    content: '';
+                    position: absolute;
+                    top: 8px;
+                    left: 0;
+                    height: 2px;
+                    width: 2rem;
+                    background-color: $dark-blue;
+                    border-radius: 5px;
+                    transition: all .4s ease-out;
+
+                }
+
+                &::after {
+                    content: '';
+                    position: absolute;
+                    top: -8px;
+                    left: 0;
+                    height: 2px;
+                    width: 2rem;
+                    background-color: $dark-blue;
+                    border-radius: 5px;
+                    transition: all .4s ease-out;
+
+                }
+
+            }
+        }
+
+    }
+   
+    .open {
+        transform: translateX(0)!important;
+        overflow-y: hidden;
+    }
+
+    .nav-links.open + .menu-toggler > .menu-icon {
+        background-color: $light-gray;
+        transition: background-color .1s ease-in-out;
+
+        &::before  {
+            transform: rotate(45deg);
+            transition: all .4s ease-in-out;
+
+        }
+
+        &::after  {
+            transform: rotate(-43deg);
+            position: absolute;
+            top: 8px;
+            transition: all .4s ease-in-out;
+
+        }
+    }
+
+
+
+
+
+//Hero 
+
+.hero .text {
+    padding-top: 0;
+    height: 150vh;
+
+}
+.hero {
+    height: 150vh;
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: 15% auto auto;
+    grid-template-areas:
+    'caption'
+    'img'
+    'description';
+    .text {
+        .caption {
+            grid-template-areas: 'caption';
+            font-size: 2.3rem;
+        }
+        .description {
+            grid-template-areas: 'description';
+            transform: translateY(550px);  //Is there a better solution for pushing this div down?
+            p {
+                padding-bottom: 2rem;
+            }
+        }
+    }
+    .img {
+        padding-bottom: 3rem;
+        margin-top: 0rem;
+        height: 90%;
+
+    }
+}
+}
+
