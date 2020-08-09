@@ -20,14 +20,6 @@ body {
     overflow-x: hidden;
 }
 
-a {
-    text-decoration: none;
-    color: $dark-blue;
-    &:hover {
-        color: $green;
-    }
-}
-
 li {
     list-style: none;
 }
@@ -43,175 +35,187 @@ li {
 
 //N A V B A R 
 
-nav {
+.nav {
     .d-flex {
         height: 6rem;
         justify-content: space-between;
         align-items: center;        
-        .nav-logo {
-            font-size: 2rem;
-            font-weight: 500;
-            position: relative;
-            span {
-                display: inline-block;
-                transform: scale(.6);
-                position: absolute;
-                left: 94px;
-                top: -5px;
-            }
-        }
-        .nav-links {
-            li {
-                margin-left: 2.5rem;
-                font-size: 1.1rem;
-            }
-        }
     }
-    .menu-toggler {
-        display: none;
-        .menu-icon {
-            display: none;
-        }
+}
+
+.nav__logo {
+    font-size: 2rem;
+    font-weight: 500;
+    position: relative;
+    .trademark {
+        display: inline-block;
+        transform: scale(.6);
+        position: absolute;
+        left: 94px;
+        top: -5px;
     }
+}
+
+
+.nav__list__item{
+    margin-left: 2.5rem;
+    font-size: 1.1rem;
+}
+
+.logo__link,
+.nav__link {
+    text-decoration: none;
+    color: $dark-blue;
+    &:hover {
+        color: $green;
+    }
+}
+
+.menu__toggler {
+    display: none;
+}
+
+.menu__toggler__icon {
+    display: none;
 }
 
 //H E R O 
 
-    .hero {
-        height: 80vh;
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        grid-template-rows: 1;
-        grid-template-areas:
-        'text img';
+.hero {
+    height: 80vh;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 1;
+    grid-template-areas:
+    'text img';
+}
 
-        .text {
-            grid-area: 'text';
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-            padding-top: 4rem;
-            .caption {
-                font-size: 3rem;
-                font-weight: 300;
-                padding-bottom: 3rem;
-            }
-            p {
-                font-size: 1.3rem;
-                padding-bottom: 5rem;
-            }
-            button {
-                background-color: $green;
-                color: white;
-                font-size: .9rem;
-                display: inline-block;
-                width: 10rem;
-                padding: 15px 20px;
-                border: none;
-                &:hover {
-                    background-color: lighten($color: $green, $amount: 5);
-                }
-            }
-        }
-        .img {
-            margin-top: 2rem;
-            grid-area: 'img';
-            background: url(../img/hero.png);
-            background-size: cover;
-            background-position: center;
-            height: 100%;
-            width: 100%;
-        }
+.hero__copy {
+    grid-area: 'text';
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding-top: 4rem;
+}
+
+.hero__heading {
+    font-size: 3rem;
+    font-weight: 300;
+    padding-bottom: 3rem;
+}
+
+.hero__subheading__text {
+    font-size: 1.3rem;
+    padding-bottom: 5rem;
+}
+
+.btn {
+    background-color: $green;
+    color: white;
+    font-size: .9rem;
+    display: inline-block;
+    width: 10rem;
+    padding: 15px 20px;
+    border: none;
+    &:hover {
+        background-color: lighten($color: $green, $amount: 5);
     }
+}
 
+.hero__img {
+    margin-top: 2rem;
+    grid-area: 'img';
+    background: url(../img/hero.png);
+    background-size: cover;
+    background-position: center;
+    height: 100%;
+    width: 100%;
+}
 
 
 @media screen and (max-width: 790px) {
 
  //Navbar
 
-    nav {
+    .nav {
         position: relative;
         left: 0;
         top: 0;
         z-index: 1;
+    }
 
-        .nav-links {
-            width: 100%;
+
+    .nav__list {
+        width: 100%;
+        height: 100vh;
+        background-color:$light-gray;
+        position: absolute;
+        left: 0%;
+        top: 0;
+        transform: translateX(-100%);
+        transition: transform .5s ease-in;
+        z-index: 250;
+
+        .d-flex {
+            flex-direction: column;
+            justify-content: space-evenly;
             height: 100vh;
-            background-color:$light-gray;
+        }
+    }
+
+    .nav__list__item {
+        margin-left: 0;
+        .nav__link {
+            color: $dark-blue;
+            font-size: 1.3rem;
+        }
+    }
+
+
+    .menu__toggler {
+        position: relative;
+        display: block;
+        cursor: pointer;
+        height: 2rem;
+        width: 2rem;   
+        z-index: 300;
+    }
+
+    .menu__toggler  .menu__toggler__icon {
+        display: block;
+        height: 2px;
+        width: 2rem;
+        background-color: $dark-blue;
+        position: relative;
+        top: 10px;
+        z-index: 350;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color .4s ease-out;
+
+        &::before  {
+            content: '';
             position: absolute;
-            left: 0%;
-            top: 0;
-            transform: translateX(-100%);
-            transition: transform .5s ease-in;
-            z-index: 250;
-
-            .d-flex {
-                flex-direction: column;
-                justify-content: space-evenly;
-                height: 100vh;
-                & > li {
-                    margin-left: 0;
-                    a {
-                        color: $dark-blue;
-                        font-size: 1.3rem;
-                    }
-                }
-            }
+            top: 8px;
+            left: 0;
+            height: 2px;
+            width: 2rem;
+            background-color: $dark-blue;
+            border-radius: 5px;
+            transition: all .4s ease-out;
         }
 
-        .menu-toggler {
-            position: relative;
-            display: block;
-            cursor: pointer;
-            height: 2rem;
-            width: 2rem;   
-            z-index: 300;
-
-            .menu-icon {
-                display: block;
-                height: 2px;
-                width: 2rem;
-                background-color: $dark-blue;
-                position: relative;
-                top: 10px;
-                z-index: 350;
-                border-radius: 5px;
-                cursor: pointer;
-                transition: background-color .4s ease-out;
-
-
-
-                &::before  {
-                    content: '';
-                    position: absolute;
-                    top: 8px;
-                    left: 0;
-                    height: 2px;
-                    width: 2rem;
-                    background-color: $dark-blue;
-                    border-radius: 5px;
-                    transition: all .4s ease-out;
-
-                }
-
-                &::after {
-                    content: '';
-                    position: absolute;
-                    top: -8px;
-                    left: 0;
-                    height: 2px;
-                    width: 2rem;
-                    background-color: $dark-blue;
-                    border-radius: 5px;
-                    transition: all .4s ease-out;
-
-                }
-
-            }
+        &::after {
+            content: '';
+            position: absolute;
+            top: -8px;
+            left: 0;
+            height: 2px;
+            width: 2rem;
+            background-color: $dark-blue;
+            border-radius: 5px;
+            transition: all .4s ease-out;
         }
-
     }
    
     .open {
@@ -219,7 +223,7 @@ nav {
         overflow-y: hidden;
     }
 
-    .nav-links.open + .menu-toggler > .menu-icon {
+    .nav__list.open + .menu__toggler > .menu__toggler__icon {
         background-color: $light-gray;
         transition: background-color .1s ease-in-out;
 
@@ -238,45 +242,43 @@ nav {
         }
     }
 
-
-
-
-
 //Hero 
 
-.hero .text {
-    padding-top: 0;
-    height: 150vh;
+    .hero {
+        height: 150vh;
+        display: grid;
+        grid-template-columns: 100%;
+        grid-template-rows: 15% auto auto;
+        grid-template-areas:
+        'heading'
+        'img'
+        'subheading';
+    }
 
-}
-.hero {
-    height: 150vh;
-    display: grid;
-    grid-template-columns: 100%;
-    grid-template-rows: 15% auto auto;
-    grid-template-areas:
-    'caption'
-    'img'
-    'description';
-    .text {
-        .caption {
-            grid-template-areas: 'caption';
-            font-size: 2.3rem;
-        }
-        .description {
-            grid-template-areas: 'description';
-            transform: translateY(550px);  //Is there a better solution for pushing this div down?
-            p {
-                padding-bottom: 2rem;
-            }
+    .hero__copy {
+        padding-top: 0;
+        height: 100vh;
+    }
+
+    .hero__heading {
+        grid-template-areas: heading;
+        font-size: 2.3rem;
+    }
+
+    .hero__subheading {
+        grid-template-areas: subheading;
+        transform: translateY(550px);  //Is there a better solution for pushing this div down?
+        .hero__subheading__text {
+            padding-bottom: 2rem;
         }
     }
-    .img {
+
+    .hero__img {
+        grid-template-areas: img;
         padding-bottom: 3rem;
-        margin-top: 0rem;
-        height: 90%;
-
+        margin-top: 0;
     }
-}
+
+
 }
 
