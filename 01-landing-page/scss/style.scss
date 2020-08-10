@@ -12,6 +12,9 @@ $dark-blue: #283C52;
 $green: #219A9C;
 $light-gray: #E9EAF1;
 
+// html {
+//     font-size: 10px;
+// }
 
 body {
     font-family: 'Raleway', sans-serif; //300, 400, 500
@@ -51,8 +54,8 @@ li {
         display: inline-block;
         transform: scale(.6);
         position: absolute;
-        left: 94px;
-        top: -5px;
+        left: 6rem;
+        top: -.2rem;
     }
 }
 
@@ -115,7 +118,7 @@ li {
     font-size: .9rem;
     display: inline-block;
     width: 10rem;
-    padding: 15px 20px;
+    padding: 1rem 1.5rem;
     border: none;
     &:hover {
         background-color: lighten($color: $green, $amount: 5);
@@ -123,13 +126,8 @@ li {
 }
 
 .hero__img {
-    margin-top: 2rem;
+    margin-top: 3rem;
     grid-area: 'img';
-    background: url(../img/hero.png);
-    background-size: cover;
-    background-position: center;
-    height: 100%;
-    width: 100%;
 }
 
 
@@ -187,7 +185,7 @@ li {
         width: 2rem;
         background-color: $dark-blue;
         position: relative;
-        top: 10px;
+        top: 1rem;
         z-index: 350;
         border-radius: 5px;
         cursor: pointer;
@@ -277,8 +275,12 @@ li {
         grid-template-areas: img;
         padding-bottom: 3rem;
         margin-top: 0;
+        margin-left: -3rem;
     }
 
 
 }
+
+
+
 
