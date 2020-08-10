@@ -4,7 +4,9 @@
     box-sizing: border-box;
 }
 
-
+html {
+    font-size: 10px;
+}
 body {
     background-color: #223997;
     height: 100vh;
@@ -15,8 +17,8 @@ body {
 
 .toolbar {
     background-color: white;
-    width: 500px;
-    height: 180px;
+    width: 50rem;
+    height: 18rem;
     position: relative;
     top: 50vh;  
     left: 50vw;
@@ -30,27 +32,31 @@ body {
     flex-direction: column;
 }
 
-.buttons {
+.toolbar__btns {
     display: flex;
     justify-content: space-around;
-    min-width: 500px;
+    min-width: 100%;
 }
 
-.buttons li {
+.toolbar__btns .btn {
     list-style: none;
 }
 
-input {
+.input {
     position: absolute;
-    top: 200px;
+    top: 200rem;
 }
 
-label {
+.btn--label {
     cursor: pointer;
+    position: relative;
+    color: white;
+    font-size: 1.9rem;
+    display: flex;
 }
 
 
-.buttons::before {
+.toolbar__btns::before {
     display: inline-block;
     font-style: normal;
     font-variant: normal;
@@ -58,30 +64,20 @@ label {
     -webkit-font-smoothing: antialiased;
 }
 
-/* input .icon::before {
-    position: absolute;
-} */
 
-label {
-    position: relative;
-    color: white;
-    font-size: 1.3rem;
-    display: flex;
-}
-
-input:checked ~ label {
+.input:checked ~ .btn--label {
     color: #223997;
 }
 
-label.icon {
-    width: 80px;
+.btn--label.icon {
+    width: 8rem;
     margin: auto;
 }
 
-.icon-one,
-.icon-two,
-.icon-three,
-.icon-four
+.btn--one,
+.btn--two,
+.btn--three,
+.btn--four
  {
     display: flex;
     justify-content: space-around;
@@ -99,53 +95,54 @@ label.icon {
     align-self: center;
     position: absolute;
     left: 50%;
+    color: #a5a3bd;
+
 }
 
 .icon::before {
-    color: #a5a3bd;
-    font-size: 2rem;
+    font-size: 3rem;
 }
 
 .icon::after {
     bottom: -150%;
-    font-size: .4rem;
+    font-size: .8rem;
 }
 
 /* icon-one */
-.search.icon::before {
+.btn--search.icon::before {
     content: '\f002';
 }
-.search.icon::after {
+.btn--search.icon::after {
     content: '\f111';
 }
 
 /* icon-two */
-.hot.icon::before {
+.btn--hot.icon::before {
     content: '\f0e7';
 }
-.hot.icon::after {
+.btn--hot.icon::after {
     content: '\f111';
 }
 
 /* icon-three */
-.events.icon::before {
+.btn--events.icon::before {
     content: '\f073';
 }
-.events.icon::after {
+.btn--events.icon::after {
     content: '\f111';
 }
 
 /* icon-four */
-.settings.icon::before {
+.btn--settings.icon::before {
     content: '\f1de';
 }
-.settings.icon::after {
+.btn--settings.icon::after {
     content: '\f111';
 }
 
 
-input:checked ~ .icon::before {
-    top: -80px;
+.input:checked ~ .icon::before {
+    top: -8rem;
 }
 
 
@@ -156,33 +153,33 @@ input:checked ~ .icon::before {
     position: absolute;
     /* border: 1px solid red; */
     display: inline-block;
-    width: 60px;
-    height: 60px;
+    width: 6rem;
+    height: 6rem;
     border-radius: 50%;
     z-index: -1;
-}git
+}
 
 
-input:checked ~ .ripples::before {
+.input:checked ~ .ripples::before {
     content: '';
     position: absolute;
     display: inline-block;
-    width: 60px;
-    height: 60px;
+    width: 6rem;
+    height: 6rem;
     border-radius: 50%;
     animation: ripples 1s ease-out;
     /* border: 1px solid red; */
 
 }
 
-input:checked ~ .ripples::after {
-    width: 20px;
-    height: 20px;
+.input:checked ~ .ripples::after {
+    width: 1.7rem;
+    height: 1.7rem;
     content: '';
     position: absolute;
     display: inline-block;
-    width: 60px;
-    height:60px;
+    width: 6rem;
+    height:6rem;
     border-radius: 50%;
     animation: ripples 1s ease-out;
     /* animation-delay: 200ms; */
@@ -191,15 +188,18 @@ input:checked ~ .ripples::after {
 @keyframes ripples {
     0% {
       border: none;
+      transform: scale(0);
       
     }
     100% {
       border: 25px solid gray;
       opacity: 0;
+      transform: scale(100%);
+
     }
   }
   
-    @keyframes ripples-inner {
+    /* @keyframes ripples-inner {
     0% {
       border: none;
       transform: scale(0);
@@ -207,7 +207,7 @@ input:checked ~ .ripples::after {
     100% {
       border: 25px solid white;
       opacity: 0;
-      transform: scale(1);
-    }
-  }
+      transform: scale(100%);
+    } 
+  } */
   
