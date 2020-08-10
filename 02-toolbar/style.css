@@ -18,14 +18,14 @@ body {
 .toolbar {
     background-color: white;
     width: 50rem;
-    height: 18rem;
+    height: 25rem;
     position: relative;
     top: 50vh;  
     left: 50vw;
     /* margin-top: -100px;
     margin-left: -200px; */
     transform: translate(-50%, -50%);
-    border-radius: 0 0 5% 5%;
+    border-radius: 0 0 10% 10%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -35,17 +35,20 @@ body {
 .toolbar__btns {
     display: flex;
     justify-content: space-around;
-    min-width: 100%;
+    width: 100%;
 }
 
 .toolbar__btns .btn {
     list-style: none;
     position: relative;
-    width: 100px;
-    height: 100px;
-    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-    background: red;
-
+    width: 20px;
+    height: 20px;
+    /* clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    background: red; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 
@@ -54,6 +57,7 @@ body {
     top: 200rem;
 }
 
+
 .btn--label {
     cursor: pointer;
     position: absolute;
@@ -61,27 +65,18 @@ body {
     left: 0;
     font-size: 1.9rem;
     display: flex;
-
 }
 
 .btn--text {
     opacity: 0;
-    transition: opacity 200ms ease;
+    transition: all 500ms ease;
 }
 
 
 .input:checked ~ .btn--label .btn--text {
     opacity: 1;
+    transform: translateY(-20px);
 }
-
-.toolbar__btns::before {
-    display: inline-block;
-    font-style: normal;
-    font-variant: normal;
-    text-rendering: auto;
-    -webkit-font-smoothing: antialiased;
-}
-
 
 .input:checked ~ .btn--label {
     color: #223997;
@@ -92,17 +87,6 @@ body {
     margin: auto;
 }
 
-.btn--one,
-.btn--two,
-.btn--three,
-.btn--four
- {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    flex: 0 0 25%;
-}
-
 
 /* TOP AND BOTTOM ICONS  */
 
@@ -110,21 +94,45 @@ body {
 .icon::after {
     font-weight: 900;
     font-family: 'Font Awesome 5 Free';
-    align-self: center;
     position: absolute;
-    left: 50%;
+    top: 0;
+    left: 0;
     color: #a5a3bd;
-
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* vertical-align: -50%;  */
 }
 
 .icon::before {
-    font-size: 3rem;
-    transition: top 1.4s ease;
-}
+    font-size: 3rem;}
 
 .icon::after {
     bottom: -150%;
     font-size: .8rem;
+    transform: scale(0);
+    transition: all 300ms ease;
+    color: #223997;
+}
+
+.input:checked ~ .icon::before {
+    top: -5rem;
+    transform: translateY(-20px);
+    transition: all 500ms ease;
+}
+
+.input:checked ~ .icon::after {
+    transform: scale(100%);
+}
+
+
+/*Needed for Font Awesome rendering across browsers*/ 
+.toolbar__btns::before {
+    display: inline-block;
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
 }
 
 /* icon-one */
@@ -160,23 +168,19 @@ body {
 }
 
 
-.input:checked ~ .icon::before {
-    top: -8rem;
-}
 
 
 /* ANIMATIONS */
 
 
-.ripples {
+/* .ripples {
     position: absolute;
-    /* border: 1px solid red; */
     display: inline-block;
     width: 6rem;
     height: 6rem;
     border-radius: 50%;
     z-index: -1;
-}
+} */
 
 
 .input:checked ~ .ripples::before {
@@ -200,11 +204,11 @@ body {
     width: 6rem;
     height:6rem;
     border-radius: 50%;
-    animation: ripples 1s ease-out;
+    /* animation: ripples 1s ease-out; */
     /* animation-delay: 200ms; */
 }
 
-@keyframes ripples {
+/* @keyframes ripples {
     0% {
       border: none;
       transform: scale(0);
@@ -218,7 +222,7 @@ body {
     }
   }
   
-    /* @keyframes ripples-inner {
+    @keyframes ripples-inner {
     0% {
       border: none;
       transform: scale(0);
