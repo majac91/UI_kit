@@ -40,7 +40,14 @@ body {
 
 .toolbar__btns .btn {
     list-style: none;
+    position: relative;
+    width: 100px;
+    height: 100px;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    background: red;
+
 }
+
 
 .input {
     position: absolute;
@@ -49,12 +56,23 @@ body {
 
 .btn--label {
     cursor: pointer;
-    position: relative;
-    color: white;
+    position: absolute;
+    top: 0; 
+    left: 0;
     font-size: 1.9rem;
     display: flex;
+
 }
 
+.btn--text {
+    opacity: 0;
+    transition: opacity 200ms ease;
+}
+
+
+.input:checked ~ .btn--label .btn--text {
+    opacity: 1;
+}
 
 .toolbar__btns::before {
     display: inline-block;
@@ -101,6 +119,7 @@ body {
 
 .icon::before {
     font-size: 3rem;
+    transition: top 1.4s ease;
 }
 
 .icon::after {
