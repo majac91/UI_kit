@@ -22,8 +22,6 @@ body {
     position: relative;
     top: 50vh;  
     left: 50vw;
-    /* margin-top: -100px;
-    margin-left: -200px; */
     transform: translate(-50%, -50%);
     border-radius: 0 0 10% 10%;
     display: flex;
@@ -36,19 +34,52 @@ body {
     display: flex;
     justify-content: space-around;
     width: 100%;
+    height: 0vh;
 }
 
 .toolbar__btns .btn {
     list-style: none;
     position: relative;
-    width: 20px;
-    height: 20px;
+    width: 100px;
+    height: 50px;
     /* clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-    background: red; */
+    background: red; */   
+}
+
+.btn--label {
+    cursor: pointer;
+    position: relative;
+    top: 0; 
+    left: 0;
+    font-size: 1.9rem;
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+}
+
+/* Icons positioning */
+
+.toolbar__btns .btn--one .icon::before, 
+.toolbar__btns .btn--two .icon::before {
+    left: 15px;
+}
+.toolbar__btns .btn--one .icon::after,
+.toolbar__btns .btn--two .icon::after {
+    left: 23px;
+}
+
+
+.toolbar__btns .btn--three .icon::before {
+    left: 7px;
+}
+.toolbar__btns .btn--three .icon::after {
+    left: 12px;
+}
+
+
+.toolbar__btns .btn--four .icon::before {
+    left: 22px;
+}
+.toolbar__btns .btn--four .icon::after {
+    left: 32px;
 }
 
 
@@ -57,21 +88,10 @@ body {
     top: 200rem;
 }
 
-
-.btn--label {
-    cursor: pointer;
-    position: absolute;
-    top: 0; 
-    left: 0;
-    font-size: 1.9rem;
-    display: flex;
-}
-
 .btn--text {
     opacity: 0;
     transition: all 500ms ease;
 }
-
 
 .input:checked ~ .btn--label .btn--text {
     opacity: 1;
@@ -95,8 +115,8 @@ body {
     font-weight: 900;
     font-family: 'Font Awesome 5 Free';
     position: absolute;
-    top: 0;
-    left: 0;
+    top: 0; 
+    left: 0; 
     color: #a5a3bd;
     display: flex;
     justify-content: center;
@@ -105,7 +125,8 @@ body {
 }
 
 .icon::before {
-    font-size: 3rem;}
+    font-size: 3rem;
+}
 
 .icon::after {
     bottom: -150%;
@@ -118,7 +139,7 @@ body {
 .input:checked ~ .icon::before {
     top: -5rem;
     transform: translateY(-20px);
-    transition: all 500ms ease;
+    transition: all .2s linear;
 }
 
 .input:checked ~ .icon::after {
@@ -126,7 +147,7 @@ body {
 }
 
 
-/*Needed for Font Awesome rendering across browsers*/ 
+/*For Font Awesome rendering across browsers*/ 
 .toolbar__btns::before {
     display: inline-block;
     font-style: normal;
@@ -173,64 +194,39 @@ body {
 /* ANIMATIONS */
 
 
-/* .ripples {
-    position: absolute;
+.ripples {
+    position: relative;
     display: inline-block;
-    width: 6rem;
-    height: 6rem;
     border-radius: 50%;
     z-index: -1;
-} */
-
-
-.input:checked ~ .ripples::before {
-    content: '';
-    position: absolute;
-    display: inline-block;
-    width: 6rem;
-    height: 6rem;
-    border-radius: 50%;
-    animation: ripples 1s ease-out;
-    /* border: 1px solid red; */
-
+    top: -40px;
+    box-shadow: inset 0 0 2px 6px #a5a3bd;
+    transform: scale(0);
+    transition: box-shadow .2s linear;
+    opacity: 1;
 }
 
-.input:checked ~ .ripples::after {
-    width: 1.7rem;
-    height: 1.7rem;
-    content: '';
-    position: absolute;
-    display: inline-block;
-    width: 6rem;
-    height:6rem;
-    border-radius: 50%;
-    /* animation: ripples 1s ease-out; */
-    /* animation-delay: 200ms; */
+.btn--one .ripples, 
+.btn--two .ripples {
+    left: -11px;
 }
 
-/* @keyframes ripples {
-    0% {
-      border: none;
-      transform: scale(0);
-      
-    }
-    100% {
-      border: 25px solid gray;
-      opacity: 0;
-      transform: scale(100%);
+.btn--three .ripples {
+    left: -21px;
+}
 
-    }
-  }
-  
-    @keyframes ripples-inner {
-    0% {
-      border: none;
-      transform: scale(0);
-    }
-    100% {
-      border: 25px solid white;
-      opacity: 0;
-      transform: scale(100%);
-    } 
-  } */
-  
+.btn--four .ripples {
+    left: -5px;
+}
+
+.input:checked ~ .ripples {
+    content: '';
+    position: absolute;
+    opacity: 1;
+    box-shadow: inset 0 0 0 -2px #a5a3bd;
+    transform: scale(1);
+    display: inline-block;
+    width: 10rem;
+    height: 10rem;
+} 
+
