@@ -42,8 +42,10 @@ body {
     position: relative;
     width: 100px;
     height: 50px;
-    /* clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-    background: red; */   
+}
+
+.input {
+    opacity: 0;
 }
 
 .btn--label {
@@ -53,44 +55,22 @@ body {
     left: 0;
     font-size: 1.9rem;
     display: flex;
-}
-
-/* Icons positioning */
-
-.toolbar__btns .btn--one .icon::before, 
-.toolbar__btns .btn--two .icon::before {
-    left: 15px;
-}
-.toolbar__btns .btn--one .icon::after,
-.toolbar__btns .btn--two .icon::after {
-    left: 23px;
-}
-
-
-.toolbar__btns .btn--three .icon::before {
-    left: 7px;
-}
-.toolbar__btns .btn--three .icon::after {
-    left: 12px;
-}
-
-
-.toolbar__btns .btn--four .icon::before {
-    left: 22px;
-}
-.toolbar__btns .btn--four .icon::after {
-    left: 32px;
-}
-
-
-.input {
-    position: absolute;
-    top: 200rem;
+    height: 80px;
 }
 
 .btn--text {
     opacity: 0;
-    transition: all 500ms ease;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transform: translateY(35px);
+    transition: top 2s, transform 2s;
+}
+
+
+.input .btn--label .btn--text {
+    opacity: 1;
+    transform: translateY(30px);
 }
 
 .input:checked ~ .btn--label .btn--text {
@@ -121,7 +101,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    /* vertical-align: -50%;  */
+    transition: top 2s, transform 2s;
 }
 
 .icon::before {
@@ -132,14 +112,12 @@ body {
     bottom: -150%;
     font-size: .8rem;
     transform: scale(0);
-    transition: all 300ms ease;
     color: #223997;
 }
 
 .input:checked ~ .icon::before {
     top: -5rem;
     transform: translateY(-20px);
-    transition: all .2s linear;
 }
 
 .input:checked ~ .icon::after {
@@ -188,18 +166,46 @@ body {
     content: '\f111';
 }
 
+/* Icons positioning */
 
+.toolbar__btns .btn--one .icon::before, 
+.toolbar__btns .btn--two .icon::before {
+    left: 25px;
+}
+.toolbar__btns .btn--one .icon::after,
+.toolbar__btns .btn--two .icon::after {
+    left: 33px;
+    bottom: 1px;
+}
+
+
+.toolbar__btns .btn--three .icon::before {
+    left: 30px;
+}
+.toolbar__btns .btn--three .icon::after {
+    left: 35px;
+    bottom: 1px;
+}
+
+
+.toolbar__btns .btn--four .icon::before {
+    left: 22px;
+}
+.toolbar__btns .btn--four .icon::after {
+    left: 32px;
+    bottom: 1px;
+}
 
 
 /* ANIMATIONS */
 
-
 .ripples {
-    position: relative;
+    position: absolute;
+    top: -40px;
+    left: 0;
     display: inline-block;
     border-radius: 50%;
-    z-index: -1;
-    top: -40px;
+    z-index: 1;
     box-shadow: inset 0 0 2px 6px #a5a3bd;
     transform: scale(0);
     transition: box-shadow .2s linear;
@@ -222,6 +228,8 @@ body {
 .input:checked ~ .ripples {
     content: '';
     position: absolute;
+    top: -40px;
+    left: 0;
     opacity: 1;
     box-shadow: inset 0 0 0 -2px #a5a3bd;
     transform: scale(1);
@@ -230,3 +238,48 @@ body {
     height: 10rem;
 } 
 
+.btm-polygon {
+    /* background: blue; */
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+    position: absolute;
+    top: 45px;
+    left: 0px;
+    width: 100%;
+    height:60px;
+    transition: clip-path 2s;
+    z-index: 0;
+}
+
+.input:checked ~ .btm-polygon {
+    background: white;
+    clip-path: polygon(0 0, 100% 44%, 100% 100%, 0% 100%);
+    position: absolute;
+    top: 45px;
+    left: 0px;
+    width: 100%;
+    height:60px;
+}
+
+.top-polygon {
+    /* background: red; */
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 44%);
+    position: absolute;
+    top: -72px;
+    left: 0px;
+    width: 100%;
+    height:70px;
+    transition: clip-path 2s;
+    z-index: 0;
+}
+
+.input:checked ~ .top-polygon {
+    background: white;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+    position: absolute;
+    top: -72px;
+    left: 0px;
+    width: 100%;
+    height:70px;
+    transition: clip-path 2s;
+    z-index: 0;
+}
