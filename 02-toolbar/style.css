@@ -18,7 +18,7 @@ body {
 .toolbar {
     background-color: white;
     width: 50rem;
-    height: 25rem;
+    height: 22.5rem;
     position: relative;
     top: 50vh;  
     left: 50vw;
@@ -65,7 +65,6 @@ body {
     text-align: center;
     transform: translateY(35px);
     transition: top 2s, transform 2s;
-    z-index: 1200;
 }
 
 
@@ -115,7 +114,6 @@ body {
     font-size: .8rem;
     transform: scale(0);
     color: #223997;
-    z-index: -10;
 }
 
 .input:checked ~ .icon::before {
@@ -245,8 +243,8 @@ body {
 }
 
 .btm-polygon {
-    /* background: blue; */
     background: white;
+    /* background: blue; */
     clip-path: polygon(0 100%, 0 0, 100% 0, 100% 100%);  
     position: absolute;
     top: 45px;
@@ -254,16 +252,15 @@ body {
     width: 100%;
     height:60px;
     transition: clip-path 2s;
-    z-index: 0;
+    z-index: 1000;
 }
 
 .input:checked ~ .btm-polygon {
-    /* background: blue; */
-    background: white;
     clip-path: polygon(0 100%, 0 0, 100% 44%, 100% 100%);
     position: absolute;
     top: 45px;
     left: 0px;
+    transition: clip-path 2s;
     width: 100%;
     height:60px;
 }
@@ -271,23 +268,22 @@ body {
 .top-polygon {
     /* background: red; */
     background: white;
-    clip-path: polygon(0 100%, 0 0, 100% 44%, 100% 100%);
+    clip-path: polygon(0 72%, 0 0, 100% 44%, 100% 100%);
     position: absolute;
     top: 0px;
     left: 0px;
     width: 100%;
     height: 0;
-    transition: height 2s, top 2s, transform 2s;
     transition-delay: 1s;
     z-index: 1000;
 }
 
 .input:checked ~ .top-polygon {
-    /* background: red; */
     position: absolute;
     top: -48px;
     left: 0px;
     width: 100%;
-    height:50px;
+    height:54px;
+    transition: height 2s, top 2s, transform 2s;
     transform: translateY(-20px);
 }
