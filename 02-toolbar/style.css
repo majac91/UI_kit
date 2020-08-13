@@ -65,6 +65,7 @@ body {
     text-align: center;
     transform: translateY(35px);
     transition: top 2s, transform 2s;
+    z-index: 1200;
 }
 
 
@@ -106,6 +107,7 @@ body {
 
 .icon::before {
     font-size: 3rem;
+    z-index: 0;
 }
 
 .icon::after {
@@ -113,15 +115,18 @@ body {
     font-size: .8rem;
     transform: scale(0);
     color: #223997;
+    z-index: -10;
 }
 
 .input:checked ~ .icon::before {
     top: -5rem;
     transform: translateY(-20px);
+    z-index: 900;
 }
 
 .input:checked ~ .icon::after {
     transform: scale(100%);
+    z-index: 10;
 }
 
 
@@ -205,7 +210,7 @@ body {
     left: 0;
     display: inline-block;
     border-radius: 50%;
-    z-index: 1;
+    z-index: 3000;
     box-shadow: inset 0 0 2px 6px #a5a3bd;
     transform: scale(10%);
     transition: box-shadow .2s linear;
@@ -242,7 +247,7 @@ body {
 .btm-polygon {
     /* background: blue; */
     background: white;
-    clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+    clip-path: polygon(0 100%, 0 0, 100% 0, 100% 100%);  
     position: absolute;
     top: 45px;
     left: 0px;
@@ -253,7 +258,9 @@ body {
 }
 
 .input:checked ~ .btm-polygon {
-    clip-path: polygon(0 0, 100% 44%, 100% 100%, 0% 100%);
+    /* background: blue; */
+    background: white;
+    clip-path: polygon(0 100%, 0 0, 100% 44%, 100% 100%);
     position: absolute;
     top: 45px;
     left: 0px;
@@ -262,26 +269,25 @@ body {
 }
 
 .top-polygon {
+    /* background: red; */
     background: white;
-    clip-path: polygon(0 45%, 100% 44%, 100% 100%, 0 100%);
+    clip-path: polygon(0 100%, 0 0, 100% 44%, 100% 100%);
     position: absolute;
-    top: -95px;
+    top: -35px;
     left: 0px;
     width: 100%;
-    height:90px;
-    transition: clip-path 2s;
-    z-index: 0;
+    height:46px;
+    transition: top 2s, transform 2s;
+    transition-delay: 1s;
+    z-index: 1000;
 }
 
 .input:checked ~ .top-polygon {
-    clip-path: polygon(0 45%, 100% 44%, 100% 100%, 0 71%);
+    /* background: red; */
     position: absolute;
-    top: -98px;
+    top: -50px;
     left: 0px;
     width: 100%;
-    height:90px;
-    transition: clip-path 2s;
-    z-index: 0;
-    transition-delay: .1s;
-
+    height:46px;
+    transform: translateY(-20px);
 }
