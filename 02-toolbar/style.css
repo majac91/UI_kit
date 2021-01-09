@@ -1,0 +1,283 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 10px;
+}
+body {
+    background-color: #223997;
+    height: 100vh;
+    position: relative;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: 500;
+}
+
+.toolbar {
+    background-color: white;
+    width: 60rem;
+    height: 22.5rem;
+    position: relative;
+    top: 50vh;  
+    left: 50vw;
+    transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.toolbar__btns {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+}
+
+.toolbar__btns .btn {
+    list-style: none;
+    position: relative;
+    width: 100px;
+    height: 50px;
+}
+
+.input {
+    opacity: 0;
+}
+
+.btn--label {
+    cursor: pointer;
+    position: relative;
+    top: 0; 
+    left: 0;
+    font-size: 1.9rem;
+    display: flex;
+    height: 80px;
+    transition: transform .8s;
+}
+
+.btn--text {
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transform: translateY(35px);
+    transition: top .8s, transform .8s;
+    
+}
+
+
+.input:checked ~ .btn--label .btn--text {
+    opacity: 1;
+    transform: translateY(-20px);
+}
+
+.input:checked ~ .btn--label {
+    color: #223997;
+}
+
+.btn--label.icon {
+    width: 8rem;
+    margin: auto;
+}
+
+
+/* TOP AND BOTTOM ICONS  */
+
+.icon::before, 
+.icon::after {
+    font-weight: 900;
+    font-family: 'Font Awesome 5 Free';
+    position: absolute;
+    top: 0; 
+    left: 0; 
+    color: #a5a3bd;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: top .8s, transform .8s;
+
+}
+
+.icon::before {
+    font-size: 3rem;
+    z-index: 0;
+}
+
+.icon::after {
+    bottom: -150%;
+    font-size: .8rem;
+    transform: scale(0);
+    color: #223997;
+}
+
+.input:checked ~ .icon::before {
+    top: -5rem;
+    transform: translateY(-20px);
+    z-index: 900;
+}
+
+.input:checked ~ .icon::after {
+    transform: scale(100%);
+    z-index: 10;
+}
+
+
+/*For Font Awesome rendering across browsers*/ 
+.toolbar__btns::before {
+    display: inline-block;
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* icon-one */
+.btn--search.icon::before {
+    content: '\f002';
+}
+.btn--search.icon::after {
+    content: '\f111';
+}
+
+/* icon-two */
+.btn--hot.icon::before {
+    content: '\f0e7';
+}
+.btn--hot.icon::after {
+    content: '\f111';
+}
+
+/* icon-three */
+.btn--events.icon::before {
+    content: '\f073';
+}
+.btn--events.icon::after {
+    content: '\f111';
+}
+
+/* icon-four */
+.btn--settings.icon::before {
+    content: '\f1de';
+}
+.btn--settings.icon::after {
+    content: '\f111';
+}
+
+/* Icons positioning */
+
+.toolbar__btns .btn--one .icon::before, 
+.toolbar__btns .btn--two .icon::before {
+    left: 25px;
+}
+.toolbar__btns .btn--one .icon::after,
+.toolbar__btns .btn--two .icon::after {
+    left: 33px;
+    bottom: 1px;
+}
+
+
+.toolbar__btns .btn--three .icon::before {
+    left: 30px;
+}
+.toolbar__btns .btn--three .icon::after {
+    left: 35px;
+    bottom: 1px;
+}
+
+
+.toolbar__btns .btn--four .icon::before {
+    left: 22px;
+}
+.toolbar__btns .btn--four .icon::after {
+    left: 32px;
+    bottom: 1px;
+}
+
+
+/* ANIMATIONS */
+
+.ripples {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    display: inline-block;
+    border-radius: 50%;
+    z-index: 3000;
+    box-shadow: inset 0 0 2px 6px #a5a3bd;
+    transform: scale(10%);
+    transition: box-shadow .2s linear;
+    opacity: 1;
+}
+
+.input:checked ~ .ripples {
+    content: '';
+    position: absolute;
+    top: -40px;
+    left: 0;
+    opacity: 1;
+    box-shadow: inset 0 0 0 -2px #a5a3bd;
+    transform: scale(100%);
+    display: inline-block;
+    width: 10rem;
+    height: 10rem;
+} 
+
+
+.btn--one .ripples, 
+.btn--two .ripples {
+    left: -11px;
+}
+
+.btn--three .ripples {
+    left: -21px;
+}
+
+.btn--four .ripples {
+    left: -5px;
+}
+
+.btm-polygon {
+    background: white;
+    clip-path: polygon(0 100%, 0 0, 100% 0, 100% 100%);  
+    position: absolute;
+    top: 45px;
+    left: 0px;
+    width: 100%;
+    height:60px;
+    transition: clip-path .8s;
+    z-index: 1000;
+}
+
+.input:checked ~ .btm-polygon {
+    clip-path: polygon(0 100%, 0 0, 100% 48%, 100% 100%);
+    position: absolute;
+    top: 45px;
+    left: 0px;
+    transition: clip-path .8s;
+    width: 100%;
+    height:60px;
+}
+
+.top-polygon {
+    background: white;
+    clip-path: polygon(0 72%, 0 0, 100% 44%, 100% 100%);
+    position: absolute;
+    top: 15px;
+    left: 0px;
+    width: 100%;
+    height: 0;
+    transition: height .8s, top .8s, transform .8s;
+    z-index: 1000;
+}
+
+.input:checked ~ .top-polygon {
+    position: absolute;
+    top: -48px;
+    left: 0px;
+    width: 100%;
+    height:54px;
+    transition:  height .8s, top .8s, transform .8s;
+    transform: translateY(-20px);
+}
