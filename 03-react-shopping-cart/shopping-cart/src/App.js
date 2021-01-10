@@ -1,5 +1,5 @@
 import "./App.css";
-import StoreFront from "./StoreFront.js";
+import StoreFront from "./components/StoreFront.js";
 
 function App() {
   return <StoreFront />;

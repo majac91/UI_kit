@@ -67,14 +67,6 @@ label {
   margin: 5px 0 15px 0;
 }
 
-.textfield::placeholder {
-  color: red;
-}
-.textfield::-moz-placeholder {
-  /* Firefox 19+ */
-  padding-left: 3px;
-}
-
 form {
   display: flex;
   flex-direction: column;
