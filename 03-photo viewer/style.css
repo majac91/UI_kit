@@ -1,0 +1,37 @@
+.photo-viewer {
+  display: flex;
+  gap: 10px;
+  width: 40vw;
+}
+
+.photo-roll {
+  gap: 10px;
+  flex: 0 0 100px;
+  display: flex;
+  flex-direction: column;
+}
+
+.photo-roll img {
+  width: 100%;
+}
+
+.clickable-photo {
+  border: none;
+}
+.actions {
+  margin-top: auto;
+  display: flex;
+  gap: 3px;
+  justify-content: space-between;
+}
+
+.main-photo {
+  /* Inline elements are treated as typography so the aprent adds extra spacing    so we set line-height to 0. In this case this fixes the bottom allignment of  main image and action buttons */
+  line-height: 0;
+}
+
+.main-photo,
+.main-photo img {
+  width: 100%;
+  min-width: 200px;
+}
